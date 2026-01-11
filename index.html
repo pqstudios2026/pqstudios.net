@@ -20,6 +20,7 @@
 <!-- Web Manifest -->
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#4682b4">   
+    
     <style>
         /* ===== CRITICAL FIXES ===== */
         html, body {
@@ -27,8 +28,6 @@
             overflow-x: hidden;
             position: relative;
             width: 100%;
-            margin: 0;
-            padding: 0;
         }
 
         /* ===== EXTREME MOBILE OPTIMIZATION ===== */
@@ -45,10 +44,10 @@
             /* UPDATED BLUE COLOR THEME - #4682b4 */
             --primary: #1a1a2e;
             --secondary: #16213e;
-            --accent: #4682b4;
+            --accent: #4682b4; /* CHANGED from #3a86ff to #4682b4 */
             --accent-light: #5d9cff;
             --accent-dark: #2a5fc1;
-            --accent-gradient: linear-gradient(135deg, #4682b4, #4361ee);
+            --accent-gradient: linear-gradient(135deg, #4682b4, #4361ee); /* UPDATED */
             --light: #f8f9fa;
             --gray: #6c757d;
             --gray-light: #e9ecef;
@@ -61,6 +60,7 @@
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
             --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+            --overlay: rgba(0,0,0,0.9);
         }
 
         html {
@@ -69,6 +69,7 @@
             -webkit-text-size-adjust: 100%;
         }
 
+        /* ===== ENHANCED PHOTOGRAPHY ICONS BACKGROUND ===== */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--black);
@@ -77,9 +78,10 @@
             position: relative;
             overflow-x: hidden;
             min-height: 100vh;
+            /* Add subtle texture overlay */
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(70, 130, 180, 0.02) 0%, transparent 25%),
-                radial-gradient(circle at 90% 80%, rgba(70, 130, 180, 0.02) 0%, transparent 25%);
+                radial-gradient(circle at 10% 20%, rgba(70, 130, 180, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(70, 130, 180, 0.03) 0%, transparent 20%);
         }
 
         .photography-icons {
@@ -90,32 +92,31 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: #ffffff;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.4; /* Medium opacity */
         }
         
         .icon {
             position: absolute;
-            color: rgba(70, 130, 180, 0.12);
-            font-size: 1.2rem;
-            opacity: 0.6;
+            color: rgba(70, 130, 180, 0.15); /* Updated to #4682b4 with 15% opacity */
+            font-size: 1.5rem;
+            opacity: 0.7;
             z-index: -1;
             pointer-events: none;
-            animation: float 25s infinite ease-in-out;
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
-            min-width: 28px;
-            min-height: 28px;
+            animation: float 20s infinite ease-in-out;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+            text-shadow: 0 0 1px rgba(0,0,0,0.1);
         }
 
         .icon.dark {
-            color: rgba(0, 0, 0, 0.08);
+            color: rgba(0, 0, 0, 0.1); /* Faded black icons */
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            33% { transform: translateY(-6px) rotate(1deg) scale(1.01); }
-            66% { transform: translateY(3px) rotate(-0.5deg) scale(0.99); }
+            33% { transform: translateY(-8px) rotate(2deg) scale(1.02); }
+            66% { transform: translateY(4px) rotate(-1deg) scale(0.98); }
         }
 
         /* ===== SECTION BACKGROUNDS ===== */
@@ -132,30 +133,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.92);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* ===== FIXED: DESKTOP FULL WIDTH CONTAINER ===== */
+        /* ===== FULL WIDTH CONTAINER ===== */
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
             position: relative;
         }
 
         @media (min-width: 768px) {
             .container {
-                padding: 0 30px;
-                max-width: 100%;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                padding: 0 50px;
+                padding: 0 40px;
             }
         }
 
@@ -199,7 +193,7 @@
         .mb-3 { margin-bottom: 1.75rem; }
         .mb-4 { margin-bottom: 2.5rem; }
 
-        /* ===== FIXED: DESKTOP BUTTON PLACEMENT ===== */
+        /* ===== MOBILE-FRIENDLY BUTTONS ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -216,19 +210,10 @@
             min-width: 56px;
             gap: 0.75rem;
             touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
             position: relative;
             z-index: 2;
-        }
-
-        @media (min-width: 768px) {
-            .btn-group {
-                justify-content: center;
-                max-width: none;
-            }
-            
-            .btn-spacing {
-                margin: 10px !important;
-            }
         }
 
         .btn:focus {
@@ -245,7 +230,7 @@
         .btn-primary:hover {
             background: var(--accent-light);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(70, 130, 180, 0.3);
+            box-shadow: 0 10px 25px rgba(70, 130, 180, 0.3); /* Updated */
         }
 
         .btn-primary:active {
@@ -357,7 +342,7 @@
 
         @media (max-width: 768px) {
             .logo-image {
-                height: 40px;
+                height: 40px; /* Reduced for mobile */
             }
         }
 
@@ -411,7 +396,7 @@
             }
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu - FIXED: Menu starts below logo */
         .menu-toggle {
             width: 48px;
             height: 48px;
@@ -474,7 +459,7 @@
 
         .nav-overlay {
             position: fixed;
-            top: 70px;
+            top: 70px; /* FIXED: Starts below header */
             left: 0;
             width: 100%;
             height: calc(100vh - 70px);
@@ -492,11 +477,11 @@
 
         .nav-menu {
             position: fixed;
-            top: 70px;
+            top: 70px; /* FIXED: Starts below header */
             right: -100%;
             width: 85%;
             max-width: 320px;
-            height: calc(100vh - 70px);
+            height: calc(100vh - 70px); /* FIXED: Height accounts for header */
             background: var(--white);
             padding: 2rem 1.75rem;
             transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -537,7 +522,7 @@
 
         .nav-menu .nav-link:active,
         .nav-menu .nav-link.active {
-            background: rgba(70, 130, 180, 0.1);
+            background: rgba(70, 130, 180, 0.1); /* Updated */
             color: var(--accent);
         }
 
@@ -572,10 +557,10 @@
             display: block;
         }
 
-        /* ===== FIXED: MOBILE-OPTIMIZED HERO SLIDESHOW ===== */
+        /* ===== HOME PAGE - UPDATED SLIDESHOW ===== */
         .slideshow-hero {
             position: relative;
-            min-height: 75vh;
+            min-height: 85vh; /* Desktop: Not full screen */
             display: flex;
             align-items: center;
             overflow: hidden;
@@ -583,22 +568,17 @@
 
         @media (max-width: 768px) {
             .slideshow-hero {
-                min-height: 55vh;
-                height: 55vh;
-                max-height: 55vh;
-                margin-top: 0;
-                padding-top: 5px;
-                padding-bottom: 5px;
+                min-height: 60vh; /* Mobile: Square shape */
+                height: 60vh;
+                max-height: 60vh;
             }
         }
 
         @media (max-width: 480px) {
             .slideshow-hero {
-                min-height: 50vh;
-                height: 50vh;
-                max-height: 50vh;
-                padding-top: 3px;
-                padding-bottom: 3px;
+                min-height: 55vh; /* Smaller mobile */
+                height: 55vh;
+                max-height: 55vh;
             }
         }
 
@@ -625,62 +605,32 @@
             opacity: 1;
         }
 
-        .slide picture {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-            display: block;
         }
 
-        @media (max-width: 768px) {
-            .slide img {
-                object-fit: contain;
-                background-color: #f8f9fa;
-            }
-        }
-
-        /* ===== FIXED: FEATURED WORK WITH PROPER SPACING ===== */
+        /* ===== HOME PAGE Featured Work - UPDATED with 6 items ===== */
         .featured-work {
             position: relative;
-            padding-top: 2rem !important;
-            padding-bottom: 1.5rem !important;
-            margin-top: 0 !important;
-        }
-
-        @media (max-width: 768px) {
-            .featured-work {
-                padding-top: 1.5rem !important;
-                padding-bottom: 1rem !important;
-                margin-top: 0 !important;
-            }
-        }
-
-        .featured-work .container {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
+            padding-top: 2rem;
         }
         
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 4px;
-            margin-top: 1rem !important;
+            margin-top: 2rem;
             position: relative;
             z-index: 2;
         }
 
         @media (min-width: 768px) {
             .featured-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns for 6 items */
                 gap: 1rem;
-                margin-top: 1.5rem !important;
             }
         }
 
@@ -704,7 +654,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== FIXED CLIENT LOGO SCROLLING ===== */
+        /* ===== FIXED CLIENT LOGO SCROLLING - UPDATED for mobile ===== */
         .clients-section {
             padding: 3rem 0;
             background: rgba(248, 249, 250, 0.8);
@@ -723,9 +673,10 @@
         .clients-track {
             display: flex;
             align-items: center;
-            animation: scrollClients 25s linear infinite;
+            gap: 1.5rem; /* Reduced gap for mobile */
+            padding: 1.5rem 0;
+            animation: scrollClients 30s linear infinite;
             will-change: transform;
-            width: max-content;
         }
         
         .clients-track:hover {
@@ -743,31 +694,17 @@
         
         .client-logo-item {
             flex: 0 0 auto;
-            width: 120px;
-            height: 70px;
+            width: 120px; /* Reduced for mobile */
+            height: 70px; /* Reduced for mobile */
             background: rgba(255, 255, 255, 0.95);
             border-radius: var(--radius-md);
-            padding: 15px !important;
+            padding: 15px !important; /* Reduced padding */
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid var(--gray-light);
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
-            margin-right: 2rem;
-        }
-
-        @media (max-width: 767px) {
-            .client-logo-item {
-                width: 110px;
-                height: 65px;
-                padding: 12px !important;
-                margin-right: 1.5rem;
-            }
-            
-            .clients-track {
-                animation-duration: 20s;
-            }
         }
 
         @media (min-width: 768px) {
@@ -776,7 +713,10 @@
                 height: 90px;
                 padding: 25px !important;
                 box-shadow: var(--shadow-lg);
-                margin-right: 2.5rem;
+            }
+            
+            .clients-track {
+                gap: 2.5rem;
             }
         }
         
@@ -799,7 +739,7 @@
             transform: scale(1.1);
         }
 
-        /* ===== ABOUT PAGE ===== */
+        /* ===== ABOUT PAGE - FIXED MOBILE LAYOUT ===== */
         .about-hero {
             position: relative;
             min-height: 20vh;
@@ -811,7 +751,7 @@
         }
 
         .profile-image {
-            width: 180px;
+            width: 180px; /* Slightly reduced */
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
@@ -836,6 +776,7 @@
             transform: scale(1.05);
         }
 
+        /* Brand Story Section - Fixed spacing */
         .brand-story {
             background: rgba(255, 255, 255, 0.95);
             border-radius: var(--radius-lg);
@@ -897,7 +838,7 @@
             min-width: 30px;
         }
 
-        /* Stats Grid */
+        /* Stats Grid - UPDATED: Removed Sessions and Awards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -907,7 +848,7 @@
 
         @media (min-width: 768px) {
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns */
                 gap: 1.5rem;
                 margin: 2.5rem 0;
                 max-width: 500px;
@@ -955,7 +896,7 @@
             color: var(--gray);
         }
 
-        /* ===== SERVICES PAGE ===== */
+        /* ===== SERVICES PAGE - UPDATED with Brand Portfolios ===== */
         .services-hero {
             position: relative;
             min-height: 20vh;
@@ -985,12 +926,6 @@
         @media (min-width: 1024px) {
             .service-cards {
                 grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (min-width: 1400px) {
-            .service-cards {
-                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1139,7 +1074,7 @@
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(70, 130, 180, 0.3);
+            box-shadow: 0 4px 15px rgba(70, 130, 180, 0.3); /* Updated */
             transition: var(--transition);
         }
 
@@ -1205,7 +1140,7 @@
         }
 
         .simple-dropdown-item:hover {
-            background: rgba(70, 130, 180, 0.1);
+            background: rgba(70, 130, 180, 0.1); /* Updated */
             color: var(--accent);
             padding-left: 25px;
         }
@@ -1258,12 +1193,6 @@
         }
 
         @media (min-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (min-width: 1400px) {
             .gallery-grid {
                 grid-template-columns: repeat(5, 1fr);
             }
@@ -1368,7 +1297,7 @@
             object-fit: contain;
         }
 
-        /* ===== CONTACT PAGE ===== */
+        /* ===== CONTACT PAGE - UPDATED ===== */
         .contact-hero {
             position: relative;
             min-height: 20vh;
@@ -1387,8 +1316,6 @@
             position: relative;
             z-index: 2;
             border: 1px solid var(--gray-light);
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         @media (max-width: 768px) {
@@ -1397,12 +1324,12 @@
             }
         }
 
-        /* Contact info cards */
+        /* Contact info cards - UPDATED: Removed phone and email */
         .contact-info-cards {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin: 2.5rem 0;
+            gap: 1rem;
+            margin: 2rem 0;
         }
 
         @media (min-width: 768px) {
@@ -1414,75 +1341,46 @@
         .info-card {
             background: white;
             border-radius: var(--radius-md);
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-light);
             transition: var(--transition);
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .info-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(70, 130, 180, 0.15);
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .info-card:hover::before {
-            opacity: 1;
         }
 
         .info-card .info-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--accent-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-
-        .info-card:hover .info-icon {
-            transform: scale(1.1);
+            font-size: 1.25rem;
+            margin: 0 auto 1rem;
         }
 
         .info-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
             color: var(--primary);
-            font-weight: 600;
         }
 
         .info-card p {
             margin: 0;
             color: var(--black);
             font-weight: 500;
-            font-size: 1.1rem;
         }
 
         .info-card small {
             color: var(--gray);
-            font-size: 0.9rem;
-            display: block;
-            margin-top: 0.5rem;
+            font-size: 0.85rem;
         }
 
         /* Form styles */
@@ -1530,7 +1428,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(70, 130, 180, 0.1);
+            box-shadow: 0 0 0 3px rgba(70, 130, 180, 0.1); /* Updated */
         }
 
         textarea.form-control {
@@ -1551,67 +1449,48 @@
         .whatsapp-cta {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: var(--radius-lg);
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .whatsapp-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
         }
 
         @media (max-width: 768px) {
             .whatsapp-cta {
-                padding: 1.75rem;
+                padding: 1.5rem;
             }
         }
 
         .whatsapp-cta h3 {
             color: white;
-            margin-bottom: 0.75rem;
-            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .whatsapp-cta p {
             color: rgba(255,255,255,0.9);
-            margin-bottom: 1.75rem;
-            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .whatsapp-btn {
             background: white;
             color: #25D366;
             font-weight: 600;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             transition: var(--transition);
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .whatsapp-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* ===== FIXED: DESKTOP FOOTER - CORNER TO CORNER ===== */
+        /* ===== ENHANCED FOOTER - UPDATED with 4 columns ===== */
         .footer {
             background: var(--primary);
             color: var(--white);
@@ -1619,26 +1498,6 @@
             margin-top: 4rem;
             position: relative;
             overflow: hidden;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .footer {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-            
-            .footer .container {
-                max-width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            
-            .footer-grid {
-                padding: 0 50px !important;
-            }
         }
 
         .footer::before {
@@ -1696,7 +1555,7 @@
         }
 
         .footer ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.5rem; /* Reduced for better mobile spacing */
             font-size: 0.85rem;
             line-height: 1.5;
             display: flex;
@@ -1714,8 +1573,8 @@
             gap: 8px;
             font-size: 0.85rem;
             line-height: 1.5;
-            padding: 4px 0;
-            min-height: 24px;
+            padding: 4px 0; /* Added padding for better touch targets */
+            min-height: 24px; /* Minimum touch target height */
         }
 
         .footer ul li a:hover {
@@ -1734,18 +1593,22 @@
             color: var(--accent-light);
             width: 16px;
             font-size: 0.8rem;
-            margin-top: 2px;
+            margin-top: 2px; /* Align icon with text */
             flex-shrink: 0;
         }
 
         /* All Features check icons */
         .all-features-list li i {
-            color: #4ECDC4;
+            color: #4ECDC4; /* Different color for checkmarks */
             font-size: 0.7rem;
             margin-top: 4px;
         }
 
-        /* Footer contact info */
+        /* Footer contact info - OPTIMIZED FOR MOBILE */
+        .footer-contact {
+            margin-top: 1.5rem;
+        }
+
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -1755,7 +1618,7 @@
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
+            align-items: flex-start; /* Changed for better mobile alignment */
             gap: 0.75rem;
             font-size: 0.9rem;
             color: rgba(255,255,255,0.9);
@@ -1785,7 +1648,7 @@
             line-height: 1.4;
         }
 
-        /* Social Links */
+        /* Enhanced Social Links for Mobile */
         .social-links {
             display: flex;
             gap: 10px;
@@ -1827,6 +1690,84 @@
 
         .social-link.phone {
             background: #34B7F1;
+        }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 767px) {
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+            
+            .footer-grid {
+                gap: 1.5rem;
+            }
+            
+            .footer h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .footer ul li,
+            .footer ul li a {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.4rem;
+            }
+            
+            .contact-item {
+                font-size: 0.85rem;
+                gap: 0.5rem;
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            /* Ensure tap targets are large enough on mobile */
+            .footer ul li a {
+                min-height: 28px;
+                padding: 6px 0;
+            }
+            
+            .all-features-list li {
+                min-height: 28px;
+                padding: 6px 0;
+            }
+        }
+
+        /* Tablet optimizations */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Reorder columns for better flow on tablet */
+            .footer-grid > div:nth-child(1) { order: 1; }
+            .footer-grid > div:nth-child(2) { order: 2; }
+            .footer-grid > div:nth-child(3) { order: 3; }
+            .footer-grid > div:nth-child(4) { order: 4; }
+        }
+
+        /* Touch optimizations for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .footer ul li a:hover {
+                transform: none;
+            }
+            
+            .footer ul li a:active {
+                color: var(--accent-light);
+                transform: scale(0.98);
+            }
+            
+            .social-link:hover {
+                transform: none;
+            }
+            
+            .social-link:active {
+                transform: scale(0.95);
+            }
         }
 
         /* ===== BACK TO TOP ===== */
@@ -1936,20 +1877,12 @@
                 gap: 2rem;
             }
             
-            /* Mobile-specific touch improvements */
-            .btn, .nav-link, .social-link, .client-logo-item,
-            .featured-item, .service-card, .info-card {
-                -webkit-tap-highlight-color: rgba(70, 130, 180, 0.2);
-            }
-            
-            /* Larger tap targets for mobile */
-            .btn {
-                min-height: 48px;
-                min-width: 48px;
-            }
-            
-            .nav-menu .nav-link {
-                min-height: 54px;
+            /* Fix text spacing on mobile */
+            .brand-story p,
+            .about-hero p,
+            .services-hero p {
+                line-height: 1.6;
+                margin-bottom: 1rem;
             }
         }
 
@@ -1960,8 +1893,7 @@
             .social-link:hover,
             .client-logo-item:hover,
             .featured-item:hover img,
-            .service-card:hover,
-            .info-card:hover {
+            .service-card:hover {
                 transform: none;
             }
             
@@ -1970,23 +1902,12 @@
             .social-link:active,
             .client-logo-item:active,
             .featured-item:active img,
-            .service-card:active,
-            .info-card:active {
+            .service-card:active {
                 transform: scale(0.95);
             }
             
             .back-to-top:active {
                 transform: scale(0.95);
-            }
-            
-            /* Remove hover effects on touch devices */
-            .desktop-nav .nav-link:hover::after {
-                width: 0;
-            }
-            
-            .client-logo-item:hover .client-logo-img {
-                opacity: 1;
-                transform: none;
             }
         }
 
@@ -1999,9 +1920,9 @@
         }
 
         .form-status.loading {
-            background: rgba(70, 130, 180, 0.1);
+            background: rgba(70, 130, 180, 0.1); /* Updated */
             color: var(--accent);
-            border: 1px solid rgba(70, 130, 180, 0.3);
+            border: 1px solid rgba(70, 130, 180, 0.3); /* Updated */
         }
 
         .form-status.success {
@@ -2015,32 +1936,20 @@
             color: #dc3545;
             border: 1px solid rgba(220, 53, 69, 0.3);
         }
-
-        /* ===== PERFORMANCE OPTIMIZATIONS ===== */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Photography Icons Background -->
     <div class="photography-icons" id="photography-icons"></div>
 
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - UPDATED ORDER -->
     <header class="header">
         <div class="nav-container">
             <a href="#home" class="logo" onclick="event.preventDefault(); showPage('home');">
                 <img src="Logo.png" alt="PQ Studios Logo" class="logo-image">
             </a>
             
-            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation - UPDATED ORDER -->
             <nav class="desktop-nav">
                 <ul class="nav-items">
                     <li><a href="#home" class="nav-link active" onclick="event.preventDefault(); showPage('home');">Home</a></li>
@@ -2057,10 +1966,10 @@
             </button>
         </div>
         
-        <!-- Mobile Menu Overlay -->
+        <!-- Mobile Menu Overlay - FIXED: Starts below logo -->
         <div class="nav-overlay" id="navOverlay"></div>
         
-        <!-- Mobile Navigation Menu -->
+        <!-- Mobile Navigation Menu - FIXED: Starts below logo - UPDATED ORDER -->
         <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
             <ul class="nav-items">
                 <li><a href="#home" class="nav-link active" onclick="event.preventDefault(); showPage('home');"><i class="fas fa-home"></i> Home</a></li>
@@ -2081,70 +1990,36 @@
             <button class="modal-nav-btn modal-prev" id="modalPrev" aria-label="Previous image">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="modal-nav-btn modal-next" id="modalNext" aria-label="Next image">
-                <i class="fas fa-chevron-right"></i>
-            </button>
             <div class="modal-image-container">
                 <img id="modalImage" class="modal-image" src="" alt="">
             </div>
+            <button class="modal-nav-btn modal-next" id="modalNext" aria-label="Next image">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Page Content -->
+    <!-- Page Content - UPDATED ORDER -->
     <div class="page-content">
-        <!-- HOME PAGE - MOBILE OPTIMIZED -->
+        <!-- HOME PAGE -->
         <div id="home-page" class="page active">
             <section class="slideshow-hero">
                 <div class="slideshow-container" id="slideshowContainer">
-                    <!-- Slide 1 - Mobile Optimized -->
-                    <div class="slide active">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="homepageslideshow_mobile_01.jpg">
-                            <source media="(min-width: 769px)" srcset="homepageslideshow01.jpg">
-                            <img src="homepageslideshow01.jpg" alt="Professional Photography Studio" loading="eager">
-                        </picture>
-                    </div>
-                    
-                    <!-- Slide 2 - Mobile Optimized -->
-                    <div class="slide">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="homepageslideshow_mobile_02.jpg">
-                            <source media="(min-width: 769px)" srcset="homepageslideshow02.jpg">
-                            <img src="homepageslideshow02.jpg" alt="Food Photography" loading="lazy">
-                        </picture>
-                    </div>
-                    
-                    <!-- Slide 3 - Mobile Optimized -->
-                    <div class="slide">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="homepageslideshow_mobile_03.jpg">
-                            <source media="(min-width: 769px)" srcset="homepageslideshow03.jpg">
-                            <img src="homepageslideshow03.jpg" alt="Product Photography" loading="lazy">
-                        </picture>
-                    </div>
-                    
-                    <!-- Slide 4 - Mobile Optimized -->
-                    <div class="slide">
-                        <picture>
-                            <source media="(max-width: 768px)" srcset="homepageslideshow_mobile_04.jpg">
-                            <source media="(min-width: 769px)" srcset="homepageslideshow04.jpg">
-                            <img src="homepageslideshow04.jpg" alt="Fashion Photography" loading="lazy">
-                        </picture>
-                    </div>
+                    <!-- Slides loaded by JavaScript -->
                 </div>
             </section>
 
-            <!-- Featured Work Section -->
+            <!-- Featured Work Section - UPDATED with 6 items -->
             <section class="section featured-work">
                 <div class="container">
-                    <h2 class="text-center" style="margin-bottom: 0.1rem;">Featured Work</h2>
-                    <p class="text-center" style="margin-bottom: 0.25rem;">A glimpse of our recent photography projects</p>
+                    <h2 class="text-center mb-4">Featured Work</h2>
+                    <p class="text-center mb-4">A glimpse of our recent photography projects</p>
                     
                     <div class="featured-grid" id="featuredGrid">
                         <!-- Featured items loaded by JavaScript -->
                     </div>
                     
-                    <div class="text-center" style="margin-top: 0.5rem;">
+                    <div class="text-center mt-4">
                         <a href="#gallery" class="btn btn-primary btn-spacing" onclick="event.preventDefault(); showPage('gallery');">
                             <i class="fas fa-images"></i> View Full Gallery
                         </a>
@@ -2152,7 +2027,7 @@
                 </div>
             </section>
 
-            <!-- Clients Section -->
+            <!-- Clients Section - UPDATED for mobile -->
             <section class="clients-section">
                 <div class="container">
                     <h3 class="text-center mb-2" style="color: var(--primary);">Trusted By Leading Brands</h3>
@@ -2160,14 +2035,14 @@
                     
                     <div class="clients-wrapper">
                         <div class="clients-track" id="clientsTrack">
-                            <!-- Client logos loaded by JavaScript -->
+                            <!-- Client logos loaded by JavaScript - Will be duplicated for infinite loop -->
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- SERVICES PAGE - UPDATED ORDER -->
+        <!-- SERVICES PAGE - UPDATED with Brand Portfolios -->
         <div id="services-page" class="page">
             <section class="services-hero">
                 <div class="container">
@@ -2182,13 +2057,13 @@
                     <p class="text-center mb-4">Choose from our specialized photography services</p>
                     
                     <div class="service-cards" id="servicesContainer">
-                        <!-- Services loaded by JavaScript in new order -->
+                        <!-- Services loaded by JavaScript -->
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- GALLERY PAGE - UPDATED ORDER -->
+        <!-- GALLERY PAGE - UPDATED with Brand Portfolios category -->
         <div id="gallery-page" class="page">
             <!-- Simple Dropdown -->
             <div class="simple-dropdown">
@@ -2198,19 +2073,19 @@
                 </button>
                 
                 <div class="simple-dropdown-menu" id="galleryDropdownMenu">
-                    <!-- Categories loaded by JavaScript in new order -->
+                    <!-- Categories loaded by JavaScript -->
                 </div>
             </div>
 
             <!-- Gallery Content -->
             <div class="gallery-page-content">
                 <div id="gallerySections">
-                    <!-- Gallery sections loaded by JavaScript in new order -->
+                    <!-- Gallery sections loaded by JavaScript -->
                 </div>
             </div>
         </div>
 
-        <!-- ABOUT PAGE -->
+        <!-- ABOUT PAGE - FIXED MOBILE LAYOUT -->
         <div id="about-page" class="page">
             <section class="about-hero">
                 <div class="container">
@@ -2232,6 +2107,7 @@
                         <h2 class="text-center mb-3">Your Story, Beautifully Told</h2>
                         <p class="text-center mb-4">Hi, I'm Sai Kumar Maddina, the passionate photographer behind PQ Studios. With over 10 years of experience, I specialize in capturing authentic moments that tell your unique story.</p>
                         
+                        <!-- UPDATED: Removed Sessions and Awards, only 2 stats now -->
                         <div class="stats-grid">
                             <div class="stat-card">
                                 <div class="stat-number">10+</div>
@@ -2337,7 +2213,7 @@
             </section>
         </div>
 
-        <!-- CONTACT PAGE - PROFESSIONAL THEME -->
+        <!-- CONTACT PAGE - UPDATED ===== -->
         <div id="contact-page" class="page">
             <section class="contact-hero">
                 <div class="container">
@@ -2355,6 +2231,7 @@
                         <div id="formStatus" class="form-status"></div>
                         
                         <form id="contactForm" novalidate>
+                            <!-- UPDATED: Single Name field instead of First/Last -->
                             <div class="form-group">
                                 <label for="name" class="form-label required">Full Name *</label>
                                 <input type="text" id="name" class="form-control" required>
@@ -2365,22 +2242,24 @@
                                 <input type="email" id="email" class="form-control">
                             </div>
                             
+                            <!-- UPDATED: Phone Number is now required -->
                             <div class="form-group">
                                 <label for="phone" class="form-label required">Phone Number *</label>
                                 <input type="tel" id="phone" class="form-control" required>
                             </div>
                             
+                            <!-- UPDATED: Service is now required -->
                             <div class="form-group">
                                 <label for="service" class="form-label required">Service Interested In *</label>
                                 <select id="service" class="form-control" required>
                                     <option value="">Select a service</option>
                                     <option value="food">Food Photography</option>
                                     <option value="product">Product Photography</option>
+                                    <option value="ecommerce">E-Commerce Visuals</option>
                                     <option value="fashion">Fashion & Lifestyle</option>
                                     <option value="pets">Pet Photography</option>
-                                    <option value="brand">Brand Portfolios</option>
                                     <option value="interiors">Interiors & Architecture</option>
-                                    <option value="ecommerce">E-Commerce Visuals</option>
+                                    <option value="brand">Brand Portfolios</option>
                                     <option value="studio">Studio Rentals</option>
                                 </select>
                             </div>
@@ -2395,6 +2274,7 @@
                             </button>
                         </form>
                         
+                        <!-- UPDATED: Removed phone and email info cards -->
                         <div class="contact-info-cards">
                             <div class="info-card">
                                 <div class="info-icon">
@@ -2429,7 +2309,7 @@
         </div>
     </div>
 
-    <!-- Footer - CORNER TO CORNER FIXED -->
+    <!-- Footer - UPDATED with Key Features and All Features sections -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -2483,22 +2363,22 @@
                     </ul>
                 </div>
                 
-                <!-- Key Features Column - UPDATED ORDER -->
+                <!-- New: Key Features Column -->
                 <div>
                     <h3>Key Features</h3>
                     <ul>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('food');"><i class="fas fa-camera"></i> Food Photography</a></li>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('product');"><i class="fas fa-camera"></i> Product Photography</a></li>
+                        <li><a href="#services" onclick="event.preventDefault(); scrollToService('ecommerce');"><i class="fas fa-camera"></i> E-Commerce Visuals</a></li>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('fashion');"><i class="fas fa-camera"></i> Fashion & Lifestyle</a></li>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('pets');"><i class="fas fa-camera"></i> Pet Photography</a></li>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('brand');"><i class="fas fa-camera"></i> Brand Portfolios</a></li>
-                        <li><a href="#services" onclick="event.preventDefault(); scrollToService('interiors');"><i class="fas fa-camera"></i> Interiors & Architecture</a></li>
-                        <li><a href="#services" onclick="event.preventDefault(); scrollToService('ecommerce');"><i class="fas fa-camera"></i> E-Commerce Visuals</a></li>
                         <li><a href="#services" onclick="event.preventDefault(); scrollToService('studio');"><i class="fas fa-camera"></i> Studio Rentals</a></li>
+                        <li><a href="#services" onclick="event.preventDefault(); scrollToService('interiors');"><i class="fas fa-camera"></i> Interiors & Architecture</a></li>
                     </ul>
                 </div>
                 
-                <!-- All Features Column -->
+                <!-- New: All Features Column -->
                 <div>
                     <h3>All Features</h3>
                     <ul class="all-features-list">
@@ -2546,12 +2426,12 @@
             initBackToTop();
             initMobileMenu();
             
-            // Initialize page
+            // Initialize page - THIS MUST BE LAST
             initPage();
             console.log('PQ Studios Website - Initialization Complete!');
         });
 
-        // ===== PAGE MANAGEMENT =====
+        // ===== PAGE MANAGEMENT - FIXED =====
         function showPage(pageId) {
             console.log('Switching to page:', pageId);
             
@@ -2622,39 +2502,10 @@
                 'adjust', 'filter', 'crop', 'magic', 'paint-brush'
             ];
             
-            const isMobile = window.innerWidth <= 768;
-            const totalIcons = isMobile ? 20 : 35;
-            
+            const totalIcons = 45;
             container.innerHTML = '';
             
-            const usedPositions = [];
-            const minDistance = isMobile ? 18 : 12;
-            
             for (let i = 0; i < totalIcons; i++) {
-                let posX, posY;
-                let attempts = 0;
-                let positionValid = false;
-                
-                do {
-                    posX = Math.random() * 90 + 5;
-                    posY = Math.random() * 90 + 5;
-                    attempts++;
-                    
-                    positionValid = true;
-                    for (const pos of usedPositions) {
-                        const distance = Math.sqrt(Math.pow(pos.x - posX, 2) + Math.pow(pos.y - posY, 2));
-                        if (distance < minDistance) {
-                            positionValid = false;
-                            break;
-                        }
-                    }
-                    
-                } while (!positionValid && attempts < 100);
-                
-                if (!positionValid) continue;
-                
-                usedPositions.push({ x: posX, y: posY });
-                
                 const icon = document.createElement('div');
                 icon.className = 'icon';
                 
@@ -2666,9 +2517,11 @@
                     icon.innerHTML = `<i class="fas fa-${icons[Math.floor(Math.random() * icons.length)]}"></i>`;
                 }
                 
-                const size = isMobile ? (0.7 + Math.random() * 0.6) : (1 + Math.random() * 1.2);
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const size = 1.2 + Math.random() * 1.5;
                 const rotation = Math.random() * 360;
-                const opacity = isMobile ? (0.15 + Math.random() * 0.2) : (0.2 + Math.random() * 0.3);
+                const opacity = 0.3 + Math.random() * 0.4;
                 const delay = Math.random() * 20;
                 
                 icon.style.left = `${posX}%`;
@@ -2732,15 +2585,45 @@
         }
 
         // ===== SLIDESHOW =====
-        let slideshowInterval;
-        let currentSlide = 0;
-
         function initSlideshow() {
-            const slides = document.querySelectorAll('.slide');
-            if (slides.length === 0) return;
+            const slideshowContainer = document.getElementById('slideshowContainer');
+            if (!slideshowContainer) return;
+            
+            const slides = [
+                'homepageslideshow01.jpg',
+                'homepageslideshow02.jpg',
+                'homepageslideshow03.jpg',
+                'homepageslideshow04.jpg'
+            ];
+            
+            slideshowContainer.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                const slideElement = document.createElement('div');
+                slideElement.className = `slide ${index === 0 ? 'active' : ''}`;
+                
+                const img = document.createElement('img');
+                img.src = slide;
+                img.alt = `Professional Photography ${index + 1}`;
+                img.loading = index === 0 ? "eager" : "lazy";
+                
+                img.onerror = function() {
+                    this.style.backgroundColor = '#f0f0f0';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.innerHTML = `<div style="color: var(--accent); font-weight: bold; text-align: center; padding: 20px;">Slide ${index + 1}<br><small>Professional Photography</small></div>`;
+                };
+                
+                slideElement.appendChild(img);
+                slideshowContainer.appendChild(slideElement);
+            });
             
             startSlideshow();
         }
+
+        let slideshowInterval;
+        let currentSlide = 0;
 
         function startSlideshow() {
             if (slideshowInterval) clearInterval(slideshowInterval);
@@ -2817,7 +2700,7 @@
 
             clientsTrack.innerHTML = '';
             
-            for (let set = 0; set < 3; set++) {
+            for (let set = 0; set < 2; set++) {
                 clientLogos.forEach(filename => {
                     const logoItem = document.createElement('div');
                     logoItem.className = 'client-logo-item';
@@ -2839,18 +2722,9 @@
                     clientsTrack.appendChild(logoItem);
                 });
             }
-            
-            setTimeout(() => {
-                const track = document.querySelector('.clients-track');
-                if (track) {
-                    track.style.animation = 'none';
-                    void track.offsetWidth;
-                    track.style.animation = 'scrollClients 25s linear infinite';
-                }
-            }, 100);
         }
 
-        // ===== SERVICES - UPDATED ORDER =====
+        // ===== SERVICES =====
         function loadServices() {
             const servicesContainer = document.getElementById('servicesContainer');
             if (!servicesContainer) return;
@@ -2871,6 +2745,13 @@
                     features: ['White background shots', 'Lifestyle product photos', 'Detail shots', '360° views']
                 },
                 {
+                    id: 'ecommerce',
+                    title: 'E-Commerce Visuals',
+                    icon: 'fa-shopping-cart',
+                    description: 'High-quality visuals optimized for e-commerce platforms.',
+                    features: ['Amazon optimized', 'Etsy product photos', 'Shopify store', 'Social media ready']
+                },
+                {
                     id: 'fashion',
                     title: 'Fashion & Lifestyle',
                     icon: 'fa-tshirt',
@@ -2885,13 +2766,6 @@
                     features: ['Studio portraits', 'Outdoor sessions', 'Action photography', 'Family portraits']
                 },
                 {
-                    id: 'brand',
-                    title: 'Brand Portfolios',
-                    icon: 'fa-briefcase',
-                    description: 'Comprehensive brand portfolio photography for businesses.',
-                    features: ['Corporate branding', 'Executive portraits', 'Team photography', 'Brand storytelling']
-                },
-                {
                     id: 'interiors',
                     title: 'Interiors & Architecture',
                     icon: 'fa-building',
@@ -2899,11 +2773,11 @@
                     features: ['Real estate', 'Interior design', 'Architectural exteriors', 'Virtual tours']
                 },
                 {
-                    id: 'ecommerce',
-                    title: 'E-Commerce Visuals',
-                    icon: 'fa-shopping-cart',
-                    description: 'High-quality visuals optimized for e-commerce platforms.',
-                    features: ['Amazon optimized', 'Etsy product photos', 'Shopify store', 'Social media ready']
+                    id: 'brand',
+                    title: 'Brand Portfolios',
+                    icon: 'fa-briefcase',
+                    description: 'Comprehensive brand portfolio photography for businesses.',
+                    features: ['Corporate branding', 'Executive portraits', 'Team photography', 'Brand storytelling']
                 },
                 {
                     id: 'studio',
@@ -3002,26 +2876,26 @@
             }, 100);
         }
 
-        // ===== GALLERY - UPDATED ORDER =====
+        // ===== GALLERY =====
         const galleryCategories = [
             { id: 'food', name: 'Food Photography', count: 15, icon: 'fa-utensils' },
             { id: 'product', name: 'Product Photography', count: 15, icon: 'fa-box-open' },
+            { id: 'ecommerce', name: 'E-Commerce Visuals', count: 15, icon: 'fa-shopping-cart' },
             { id: 'fashion', name: 'Fashion & Lifestyle', count: 15, icon: 'fa-tshirt' },
             { id: 'pets', name: 'Pet Photography', count: 15, icon: 'fa-paw' },
-            { id: 'brand', name: 'Brand Portfolios', count: 15, icon: 'fa-briefcase' },
             { id: 'interiors', name: 'Interiors & Architecture', count: 15, icon: 'fa-building' },
-            { id: 'ecommerce', name: 'E-Commerce Visuals', count: 15, icon: 'fa-shopping-cart' },
+            { id: 'brand', name: 'Brand Portfolios', count: 15, icon: 'fa-briefcase' },
             { id: 'studio', name: 'Studio Shots', count: 10, icon: 'fa-camera' }
         ];
 
         const categoryFilePatterns = {
             'food': 'food photography',
             'product': 'product photography',
+            'ecommerce': 'ecommerce visuals',
             'fashion': 'fashion lifestyle',
             'pets': 'pet photography',
-            'brand': 'brand portfolios',
             'interiors': 'interiors architecture',
-            'ecommerce': 'ecommerce visuals',
+            'brand': 'brand portfolios',
             'studio': 'studio shots'
         };
 
@@ -3031,8 +2905,6 @@
             const dropdownMenu = document.getElementById('galleryDropdownMenu');
 
             if (!dropdownToggle || !dropdownMenu) return;
-
-            dropdownMenu.innerHTML = '';
 
             galleryCategories.forEach(category => {
                 const item = document.createElement('a');
@@ -3093,7 +2965,9 @@
                 
                 const header = document.createElement('div');
                 header.className = 'section-header';
-                header.innerHTML = `<h2>${category.name}</h2>`;
+                header.innerHTML = `
+                    <h2>${category.name}</h2>
+                `;
                 
                 const grid = document.createElement('div');
                 grid.className = 'gallery-grid';
@@ -3322,28 +3196,14 @@
                 isValid = false;
             }
 
-            // Phone number validation
-            if (phone.value.trim() && !validatePhone(phone.value)) {
-                highlightError(phone);
-                showFormStatus('error', 'Please enter a valid 10-digit phone number.');
-                isValid = false;
-            }
-
             if (!isValid) {
-                if (!document.querySelector('.form-status.error')) {
-                    showFormStatus('error', 'Please fill in all required fields correctly (marked with *).');
-                }
+                showFormStatus('error', 'Please fill in all required fields correctly (marked with *).');
                 setTimeout(() => {
                     document.getElementById('formStatus').style.display = 'none';
                 }, 5000);
             }
 
             return isValid;
-        }
-
-        function validatePhone(phone) {
-            const phoneRegex = /^[0-9]{10}$/;
-            return phoneRegex.test(phone.replace(/\D/g, ''));
         }
 
         function highlightError(field) {
@@ -3388,191 +3248,10 @@
             });
         }
 
-        // ===== RESIZE HANDLER FOR BACKGROUND ICONS =====
-        let resizeTimeout;
+        // ===== RESIZE HANDLER =====
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                initBackground();
-                // Reinitialize slideshow for responsive images
-                const slides = document.querySelectorAll('.slide');
-                if (slides.length > 0) {
-                    slides.forEach(slide => {
-                        const img = slide.querySelector('img');
-                        if (img) {
-                            // Force browser to re-evaluate srcset
-                            const src = img.src;
-                            img.src = '';
-                            img.src = src;
-                        }
-                    });
-                }
-            }, 250);
+            setTimeout(initBackground, 250);
         });
-
-        // ===== ERROR HANDLING FOR SLIDESHOW IMAGES =====
-        document.querySelectorAll('.slide img').forEach(img => {
-            img.addEventListener('error', function() {
-                console.warn(`Failed to load slideshow image: ${this.src}`);
-                
-                const isMobile = window.innerWidth <= 768;
-                const placeholderHeight = isMobile ? '55vh' : '75vh';
-                
-                this.style.backgroundColor = '#f0f0f0';
-                this.style.display = 'flex';
-                this.style.alignItems = 'center';
-                this.style.justifyContent = 'center';
-                this.style.minHeight = placeholderHeight;
-                this.innerHTML = `<div style="color: var(--accent); font-weight: bold; text-align: center; padding: 20px;">Professional Photography<br><small>PQ Studios Hyderabad</small></div>`;
-            });
-        });
-
-        // ===== IMPROVED TOUCH HANDLING FOR MOBILE =====
-        if ('ontouchstart' in window || navigator.maxTouchPoints) {
-            // Add touch-specific optimizations
-            const style = document.createElement('style');
-            style.textContent = `
-                @media (hover: none) and (pointer: coarse) {
-                    .btn:hover, .btn:focus {
-                        transform: none !important;
-                    }
-                    .service-card:hover {
-                        transform: none !important;
-                    }
-                    .featured-item:hover img {
-                        transform: none !important;
-                    }
-                    .nav-link:hover::after {
-                        width: 0 !important;
-                    }
-                    .client-logo-item:hover {
-                        transform: none !important;
-                    }
-                    .info-card:hover {
-                        transform: none !important;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        // ===== LAZY LOADING OPTIMIZATION =====
-        if ('IntersectionObserver' in window) {
-            const lazyImageObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        lazyImageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach((img) => {
-                lazyImageObserver.observe(img);
-            });
-        }
-
-        // ===== PRELOAD CRITICAL MOBILE IMAGES =====
-        if (window.innerWidth <= 768) {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = 'homepageslideshow_mobile_01.jpg';
-            link.fetchPriority = 'high';
-            document.head.appendChild(link);
-        }
-
-        // ===== SMOOTH SCROLLING FOR MOBILE =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#' || href === '#home') return;
-                
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    e.preventDefault();
-                    const headerHeight = 70;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // ===== MOBILE PERFORMANCE OPTIMIZATION =====
-        window.addEventListener('load', () => {
-            // Check if all critical images loaded
-            const criticalImages = document.querySelectorAll('.slide.active img, .logo-image');
-            let imagesLoaded = 0;
-            
-            criticalImages.forEach(img => {
-                if (img.complete) {
-                    imagesLoaded++;
-                } else {
-                    img.addEventListener('load', () => {
-                        imagesLoaded++;
-                        if (imagesLoaded === criticalImages.length) {
-                            console.log('All critical images loaded successfully');
-                        }
-                    });
-                    img.addEventListener('error', () => {
-                        console.warn('Critical image failed to load:', img.src);
-                        imagesLoaded++;
-                    });
-                }
-            });
-        });
-
-        // ===== FALLBACK FOR OLD BROWSERS =====
-        // Add class for feature detection
-        document.documentElement.className += ' js-enabled';
-
-        // Polyfill for older browsers
-        if (!Element.prototype.closest) {
-            Element.prototype.closest = function(s) {
-                var el = this;
-                do {
-                    if (Element.prototype.matches.call(el, s)) return el;
-                    el = el.parentElement || el.parentNode;
-                } while (el !== null && el.nodeType === 1);
-                return null;
-            };
-        }
-
-        // ===== PERFORMANCE OPTIMIZATION =====
-        // Defer non-critical animations
-        requestAnimationFrame(() => {
-            document.body.classList.add('loaded');
-        });
-
-        // ===== PREVENT MULTIPLE FORM SUBMISSIONS =====
-        let isSubmitting = false;
-        const originalSubmit = contactForm ? contactForm.onsubmit : null;
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                if (isSubmitting) {
-                    e.preventDefault();
-                    return;
-                }
-                isSubmitting = true;
-                
-                // Re-enable after 3 seconds
-                setTimeout(() => {
-                    isSubmitting = false;
-                }, 3000);
-            });
-        }
     </script>
 </body>
 </html>
