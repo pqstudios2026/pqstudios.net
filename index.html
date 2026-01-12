@@ -36,7 +36,7 @@
             --accent-light: #5d9cff;
             --accent-dark: #2a5fc1;
             --accent-gradient: linear-gradient(135deg, #4682b4, #4361ee);
-            --light: #f8f9fa;
+            --light: #ffffff;
             --gray: #6c757d;
             --gray-light: #e9ecef;
             --white: #ffffff;
@@ -589,24 +589,36 @@
             }
         }
 
-        .slideshow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+        /* Find this CSS for slideshow container */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #ffffff; /* ← ADD THIS - Pure white background */
+}
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
+/* Also change the slide background */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: #ffffff; /* ← ADD THIS - White fallback */
+}
+
+/* For mobile - make sure images fit properly */
+@media (max-width: 768px) {
+    .slide img {
+        object-fit: contain;
+        background-color: #ffffff; /* ← CHANGE THIS from #f8f9fa to #ffffff */
+    }
+}
 
         .slide.active {
             opacity: 1;
@@ -619,19 +631,20 @@
         }
 
         .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background-color: #ffffff; /* ADD THIS LINE */
+}
 
-        @media (max-width: 768px) {
-            .slide img {
-                object-fit: contain;
-                background-color: #f8f9fa;
-            }
-        }
+      @media (max-width: 768px) {
+    .slide img {
+        object-fit: contain;
+        background-color: #ffffff; /* CHANGE TO WHITE */
+    }
+}
 
         /* ===== FIXED: FEATURED WORK WITH PROPER SPACING ===== */
         .featured-work {
@@ -1261,7 +1274,7 @@
             width: 100%;
             overflow: hidden;
             aspect-ratio: 1;
-            background: #f8f9fa;
+            background: #ffffff;
             cursor: pointer;
         }
 
@@ -2245,7 +2258,7 @@
     
     <!-- Name field -->
     <div class="form-group">
-        <label for="name" class="form-label required">Full Name</label>
+        <label for="name" class="form-label required">Full Name *</label>
         <input type="text" id="name" name="name" class="form-control" required>
     </div>
     
@@ -2257,13 +2270,13 @@
     
     <!-- Phone field -->
     <div class="form-group">
-        <label for="phone" class="form-label required">Phone Number</label>
+        <label for="phone" class="form-label required">Phone Number *</label>
         <input type="tel" id="phone" name="phone" class="form-control" required>
     </div>
     
     <!-- Service dropdown -->
     <div class="form-group">
-        <label for="service" class="form-label required">Service Interested In</label>
+        <label for="service" class="form-label required">Service Interested In *</label>
         <select id="service" name="service" class="form-control" required>
             <option value="">Select a service</option>
             <option value="food">Food Photography</option>
