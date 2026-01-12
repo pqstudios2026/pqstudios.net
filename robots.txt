@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://www.pqstudios.net/sitemap.xml
+
+# Crawl delay (if needed for slow servers)
+# Crawl-delay: 10
