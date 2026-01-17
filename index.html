@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover PQ Studios Hyderabad - founded by  Sai Kumar Maddina. With 10+ years of expertise in wedding, commercial, and portrait photography, we transform moments into timeless visual masterpieces.">
+    <meta name="description" content="Discover PQ Studios Hyderabad - founded by award-winning photographer Sai Kumar Maddina. With 8+ years of expertise in wedding, commercial, and portrait photography, we transform moments into timeless visual masterpieces.">
     <title>PQ Studios - Professional Photography Studio | Hyderabad, India</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
                 gap: 30px !important;
             }
             
-            .gallery-grid {
+            .Portfolio-grid {
                 grid-template-columns: repeat(5, 1fr) !important;
             }
             
@@ -466,7 +466,7 @@
         .about-hero,
         .services-hero,
         .contact-hero,
-        .gallery-hero {
+        .Portfolio-hero {
             position: relative;
             min-height: 20vh;
             display: flex;
@@ -767,7 +767,7 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* ===== GALLERY PAGE ===== */
+        /* ===== Portfolio PAGE ===== */
         .simple-dropdown {
             position: fixed;
             top: 70px;
@@ -831,18 +831,18 @@
             color: #4682b4;
         }
 
-        .gallery-page-content {
+        .Portfolio-page-content {
             padding-top: 70px;
             min-height: 100vh;
         }
 
-        .gallery-section {
+        .Portfolio-section {
             padding: 40px 20px;
             scroll-margin-top: 120px;
         }
 
-        /* ===== GALLERY GRID - RESTORED TO OLD LAYOUT ===== */
-        .gallery-grid {
+        /* ===== Portfolio GRID - RESTORED TO OLD LAYOUT ===== */
+        .Portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2px;
@@ -850,24 +850,24 @@
         }
 
         @media (min-width: 768px) {
-            .gallery-grid {
+            .Portfolio-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (min-width: 1024px) {
-            .gallery-grid {
+            .Portfolio-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
 
         @media (min-width: 1400px) {
-            .gallery-grid {
+            .Portfolio-grid {
                 grid-template-columns: repeat(5, 1fr);
             }
         }
 
-        .gallery-item {
+        .Portfolio-item {
             position: relative;
             width: 100%;
             overflow: hidden;
@@ -876,7 +876,7 @@
             cursor: pointer;
         }
 
-        .gallery-item img {
+        .Portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -884,12 +884,12 @@
             transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
+        .Portfolio-item:hover img {
             transform: scale(1.05);
         }
 
-        /* ===== FIXED GALLERY MODAL POPUP ===== */
-        .gallery-modal {
+        /* ===== FIXED Portfolio MODAL POPUP ===== */
+        .Portfolio-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -902,7 +902,7 @@
             align-items: center;
         }
 
-        .gallery-modal.active {
+        .Portfolio-modal.active {
             display: flex;
         }
 
@@ -1486,7 +1486,7 @@
             
             /* Larger touch targets for mobile */
             .featured-item,
-            .gallery-item {
+            .Portfolio-item {
                 cursor: pointer;
             }
             
@@ -1901,10 +1901,10 @@
     </style>
 </head>
 <body>
-    <!-- Gallery Modal Popup -->
-    <div class="gallery-modal" id="galleryModal">
+    <!-- Portfolio Modal Popup -->
+    <div class="Portfolio-modal" id="PortfolioModal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="Close gallery">
+            <button class="modal-close" id="modalClose" aria-label="Close Portfolio">
                 <i class="fas fa-times"></i>
             </button>
             <button class="modal-nav-btn modal-prev" id="modalPrev" aria-label="Previous image">
@@ -1932,7 +1932,7 @@
                 <ul class="nav-items">
                     <li><a href="#home" class="nav-link active" onclick="event.preventDefault(); showPage('home');">Home</a></li>
                     <li><a href="#services" class="nav-link" onclick="event.preventDefault(); showPage('services');">Services</a></li>
-                    <li><a href="#gallery" class="nav-link" onclick="event.preventDefault(); showPage('gallery');">Portfolio</a></li>
+                    <li><a href="#Portfolio" class="nav-link" onclick="event.preventDefault(); showPage('Portfolio');">Portfolio</a></li>
                     <li><a href="#about" class="nav-link" onclick="event.preventDefault(); showPage('about');">About</a></li>
                     <li><a href="#contact" class="nav-link" onclick="event.preventDefault(); showPage('contact');">Contact</a></li>
                 </ul>
@@ -1952,7 +1952,7 @@
             <ul class="nav-items">
                 <li><a href="#home" class="nav-link active" onclick="event.preventDefault(); showPage('home');"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#services" class="nav-link" onclick="event.preventDefault(); showPage('services');"><i class="fas fa-camera"></i> Services</a></li>
-                <li><a href="#gallery" class="nav-link" onclick="event.preventDefault(); showPage('gallery');"><i class="fas fa-images"></i> Portfolio</a></li>
+                <li><a href="#Portfolio" class="nav-link" onclick="event.preventDefault(); showPage('Portfolio');"><i class="fas fa-images"></i> Portfolio</a></li>
                 <li><a href="#about" class="nav-link" onclick="event.preventDefault(); showPage('about');"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="#contact" class="nav-link" onclick="event.preventDefault(); showPage('contact');"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
@@ -1991,7 +1991,7 @@
                     </div>
                     
                     <div class="text-center" style="margin-top: 2rem;">
-                        <a href="#gallery" class="btn btn-primary btn-spacing" onclick="event.preventDefault(); showPage('gallery');">
+                        <a href="#Portfolio" class="btn btn-primary btn-spacing" onclick="event.preventDefault(); showPage('Portfolio');">
                             <i class="fas fa-images"></i> Explore Complete Portfolio
                         </a>
                     </div>
@@ -2018,7 +2018,7 @@
             <section class="services-hero">
                 <div class="container">
                     <h1 class="hero-title">Comprehensive <span class="highlight">Photography Services</span></h1>
-                   <!--  <p class="hero-subtitle">Elevating brands and capturing moments through masterful visual storytelling</p> -->
+                    <p class="hero-subtitle">Elevating brands and capturing moments through masterful visual storytelling</p>
                 </div>
             </section>
 
@@ -2034,22 +2034,22 @@
             </section>
         </div>
 
-        <!-- GALLERY PAGE -->
-        <div id="gallery-page" class="page">
+        <!-- Portfolio PAGE -->
+        <div id="Portfolio-page" class="page">
             <div class="simple-dropdown">
-                <button class="simple-dropdown-toggle" id="galleryDropdownToggle">
+                <button class="simple-dropdown-toggle" id="PortfolioDropdownToggle">
                     <span>Select Portfolio Category</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
                 
-                <div class="simple-dropdown-menu" id="galleryDropdownMenu">
+                <div class="simple-dropdown-menu" id="PortfolioDropdownMenu">
                     <!-- Categories loaded by JavaScript -->
                 </div>
             </div>
 
-            <div class="gallery-page-content">
-                <div id="gallerySections">
-                    <!-- Gallery sections loaded by JavaScript -->
+            <div class="Portfolio-page-content">
+                <div id="PortfolioSections">
+                    <!-- Portfolio sections loaded by JavaScript -->
                 </div>
             </div>
         </div>
@@ -2059,7 +2059,7 @@
             <section class="about-hero">
                 <div class="container">
                     <h1 class="hero-title">About <span class="highlight">PQ Studios</span></h1>
-                   <!--  <p class="hero-subtitle">Master Photography in Hyderabad by  Sai Kumar Maddina </p> -->
+                    <p class="hero-subtitle">Master Photography in Hyderabad by Award-Winning Photographer Sai Kumar Maddina</p>
                 </div>
             </section>
 
@@ -2076,7 +2076,7 @@
                         
                         <h2>About Me: The Visionary Behind PQ Studios</h2>
                         
-                        <p>I am <span class="owner-name">Sai Kumar Maddina</span>, the founder and principal photographer at PQ Studios Hyderabad. With over a decade of dedicated expertise in professional photography, I have established our studio as Hyderabad's premier destination for exceptional visual storytelling.</p>
+                        <p>I am <span class="owner-name">Sai Kumar Maddina</span>, the founder and principal photographer at PQ Studios Hyderabad. With over eight years of dedicated expertise in professional photography, I have established our studio as Hyderabad's premier destination for exceptional visual storytelling.</p>
                         
                         <p>My journey in photography began with formal education in visual arts, complemented by continuous mastery of evolving photographic techniques. This academic foundation, combined with extensive field experience, enables me to approach each project with both artistic vision and technical precision.</p>
                         
@@ -2085,7 +2085,7 @@
                         <!-- SIMPLIFIED STATS GRID -->
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-number">10+</div>
+                                <div class="stat-number">8+</div>
                                 <div class="stat-label">Years of Excellence</div>
                             </div>
                             <div class="stat-card">
@@ -2605,9 +2605,9 @@
             loadFeaturedWork();
             loadClients();
             loadServices();
-            loadGallerySections();
+            loadPortfolioSections();
             initSimpleDropdown();
-            initGalleryModal();
+            initPortfolioModal();
             initContactForm();
             initBackToTop();
             initMobileMenu();
@@ -2638,9 +2638,9 @@
             window.scrollTo(0, 0);
             closeMenu();
             
-            if (pageId !== 'gallery') {
-                const dropdownMenu = document.getElementById('galleryDropdownMenu');
-                const dropdownToggle = document.getElementById('galleryDropdownToggle');
+            if (pageId !== 'Portfolio') {
+                const dropdownMenu = document.getElementById('PortfolioDropdownMenu');
+                const dropdownToggle = document.getElementById('PortfolioDropdownToggle');
                 if (dropdownMenu && dropdownToggle) {
                     dropdownMenu.classList.remove('active');
                     dropdownToggle.classList.remove('active');
@@ -2744,9 +2744,9 @@
                 const itemElement = document.createElement('div');
                 itemElement.className = 'featured-item';
                 itemElement.addEventListener('click', () => {
-                    showPage('gallery');
+                    showPage('Portfolio');
                     setTimeout(() => {
-                        scrollToGalleryCategory(item.category);
+                        scrollToPortfolioCategory(item.category);
                     }, 100);
                 });
                 
@@ -2906,7 +2906,7 @@
                         <button class="btn btn-primary book-service-btn" data-service="${service.id}">
                             <i class="fas fa-calendar-check"></i> Schedule Consultation
                         </button>
-                        <button class="btn btn-outline view-gallery-btn" data-category="${service.id}">
+                        <button class="btn btn-outline view-Portfolio-btn" data-category="${service.id}">
                             <i class="fas fa-images"></i> View Portfolio
                         </button>
                     </div>
@@ -2925,12 +2925,12 @@
                 });
             });
 
-            document.querySelectorAll('.view-gallery-btn').forEach(btn => {
+            document.querySelectorAll('.view-Portfolio-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
-                    showPage('gallery');
+                    showPage('Portfolio');
                     setTimeout(() => {
-                        scrollToGalleryCategory(category);
+                        scrollToPortfolioCategory(category);
                     }, 100);
                 });
             });
@@ -3003,9 +3003,9 @@
             }, 300);
         }
 
-        // ===== GALLERY =====
+        // ===== Portfolio =====
         // UPDATED: All categories with correct image counts
-        const galleryCategories = [
+        const PortfolioCategories = [
             { id: 'food', name: 'Food Photography', count: 15, icon: 'fa-utensils' },
             { id: 'product', name: 'Product Photography', count: 15, icon: 'fa-box-open' },
             { id: 'fashion', name: 'Fashion & Lifestyle', count: 15, icon: 'fa-tshirt' },
@@ -3017,16 +3017,16 @@
         ];
 
         function initSimpleDropdown() {
-            const dropdownToggle = document.getElementById('galleryDropdownToggle');
-            const dropdownMenu = document.getElementById('galleryDropdownMenu');
+            const dropdownToggle = document.getElementById('PortfolioDropdownToggle');
+            const dropdownMenu = document.getElementById('PortfolioDropdownMenu');
 
             if (!dropdownToggle || !dropdownMenu) return;
 
             dropdownMenu.innerHTML = '';
 
-            galleryCategories.forEach(category => {
+            PortfolioCategories.forEach(category => {
                 const item = document.createElement('a');
-                item.href = `#gallery-${category.id}`;
+                item.href = `#Portfolio-${category.id}`;
                 item.className = 'simple-dropdown-item';
                 item.innerHTML = `<i class="fas ${category.icon}"></i> ${category.name}`;
                 
@@ -3034,7 +3034,7 @@
                     e.preventDefault();
                     dropdownToggle.classList.remove('active');
                     dropdownMenu.classList.remove('active');
-                    scrollToGalleryCategory(category.id);
+                    scrollToPortfolioCategory(category.id);
                 });
                 
                 dropdownMenu.appendChild(item);
@@ -3047,8 +3047,8 @@
             });
         }
 
-        function scrollToGalleryCategory(categoryId) {
-            const targetSection = document.getElementById(`gallery-${categoryId}`);
+        function scrollToPortfolioCategory(categoryId) {
+            const targetSection = document.getElementById(`Portfolio-${categoryId}`);
             if (!targetSection) return;
 
             const headerHeight = 70;
@@ -3062,35 +3062,35 @@
             });
         }
 
-        function loadGallerySections() {
-            const gallerySections = document.getElementById('gallerySections');
-            if (!gallerySections) return;
+        function loadPortfolioSections() {
+            const PortfolioSections = document.getElementById('PortfolioSections');
+            if (!PortfolioSections) return;
 
-            gallerySections.innerHTML = '';
+            PortfolioSections.innerHTML = '';
 
-            galleryCategories.forEach(category => {
+            PortfolioCategories.forEach(category => {
                 const section = document.createElement('section');
-                section.className = 'gallery-section';
-                section.id = `gallery-${category.id}`;
+                section.className = 'Portfolio-section';
+                section.id = `Portfolio-${category.id}`;
                 
                 const header = document.createElement('div');
                 header.className = 'section-header';
                 header.innerHTML = `<h2>${category.name}</h2>`;
                 
                 const grid = document.createElement('div');
-                grid.className = 'gallery-grid';
+                grid.className = 'Portfolio-grid';
                 grid.id = `grid-${category.id}`;
                 
                 section.appendChild(header);
                 section.appendChild(grid);
-                gallerySections.appendChild(section);
+                PortfolioSections.appendChild(section);
                 
-                loadGalleryImages(category.id, category.count);
+                loadPortfolioImages(category.id, category.count);
             });
         }
 
         // UPDATED: Fixed to match EXACT filenames from your document
-        function loadGalleryImages(categoryId, count) {
+        function loadPortfolioImages(categoryId, count) {
             const grid = document.getElementById(`grid-${categoryId}`);
             if (!grid) return;
 
@@ -3114,8 +3114,8 @@
                 // Create filename EXACTLY as in your document
                 const filename = `${baseName} ${i}.jpg`;
                 
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-item';
+                const PortfolioItem = document.createElement('div');
+                PortfolioItem.className = 'Portfolio-item';
                 
                 const img = document.createElement('img');
                 img.src = filename;
@@ -3124,45 +3124,45 @@
                 img.dataset.index = i - 1;
                 img.dataset.category = categoryId;
                 
-                galleryItem.appendChild(img);
-                grid.appendChild(galleryItem);
+                PortfolioItem.appendChild(img);
+                grid.appendChild(PortfolioItem);
                 
                 // Add click event for modal
-                galleryItem.addEventListener('click', () => {
-                    openGalleryModal(categoryId, i - 1);
+                PortfolioItem.addEventListener('click', () => {
+                    openPortfolioModal(categoryId, i - 1);
                 });
             }
         }
 
-        // ===== FIXED GALLERY MODAL =====
-        let currentGalleryImages = [];
+        // ===== FIXED Portfolio MODAL =====
+        let currentPortfolioImages = [];
         let currentImageIndex = 0;
         let currentCategory = '';
 
-        function initGalleryModal() {
+        function initPortfolioModal() {
             const modalClose = document.getElementById('modalClose');
             const modalPrev = document.getElementById('modalPrev');
             const modalNext = document.getElementById('modalNext');
-            const galleryModal = document.getElementById('galleryModal');
+            const PortfolioModal = document.getElementById('PortfolioModal');
 
-            if (!modalClose || !modalPrev || !modalNext || !galleryModal) return;
+            if (!modalClose || !modalPrev || !modalNext || !PortfolioModal) return;
 
-            modalClose.addEventListener('click', closeGalleryModal);
+            modalClose.addEventListener('click', closePortfolioModal);
             modalPrev.addEventListener('click', showPrevImage);
             modalNext.addEventListener('click', showNextImage);
 
-            galleryModal.addEventListener('click', (e) => {
-                if (e.target === galleryModal) {
-                    closeGalleryModal();
+            PortfolioModal.addEventListener('click', (e) => {
+                if (e.target === PortfolioModal) {
+                    closePortfolioModal();
                 }
             });
 
             document.addEventListener('keydown', (e) => {
-                if (!galleryModal.classList.contains('active')) return;
+                if (!PortfolioModal.classList.contains('active')) return;
                 
                 switch(e.key) {
                     case 'Escape':
-                        closeGalleryModal();
+                        closePortfolioModal();
                         break;
                     case 'ArrowLeft':
                         showPrevImage();
@@ -3174,13 +3174,13 @@
             });
         }
 
-        function openGalleryModal(categoryId, index) {
+        function openPortfolioModal(categoryId, index) {
             const grid = document.getElementById(`grid-${categoryId}`);
             if (!grid) return;
 
             // Get all images in the current category
             const imageElements = grid.querySelectorAll('img');
-            currentGalleryImages = Array.from(imageElements).map(img => ({
+            currentPortfolioImages = Array.from(imageElements).map(img => ({
                 src: img.src,
                 alt: img.alt
             }));
@@ -3190,27 +3190,27 @@
             
             updateModalImage();
             
-            const galleryModal = document.getElementById('galleryModal');
-            galleryModal.classList.add('active');
+            const PortfolioModal = document.getElementById('PortfolioModal');
+            PortfolioModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeGalleryModal() {
-            const galleryModal = document.getElementById('galleryModal');
-            galleryModal.classList.remove('active');
+        function closePortfolioModal() {
+            const PortfolioModal = document.getElementById('PortfolioModal');
+            PortfolioModal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
         function showPrevImage() {
-            if (currentGalleryImages.length > 0) {
-                currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            if (currentPortfolioImages.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + currentPortfolioImages.length) % currentPortfolioImages.length;
                 updateModalImage();
             }
         }
 
         function showNextImage() {
-            if (currentGalleryImages.length > 0) {
-                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+            if (currentPortfolioImages.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % currentPortfolioImages.length;
                 updateModalImage();
             }
         }
@@ -3219,14 +3219,14 @@
             const modalImage = document.getElementById('modalImage');
             const modalCounter = document.getElementById('modalCounter');
 
-            if (currentGalleryImages.length === 0) return;
+            if (currentPortfolioImages.length === 0) return;
 
-            const imageData = currentGalleryImages[currentImageIndex];
+            const imageData = currentPortfolioImages[currentImageIndex];
             
             modalImage.src = imageData.src;
             modalImage.alt = imageData.alt;
             
-            modalCounter.textContent = `${currentImageIndex + 1} / ${currentGalleryImages.length}`;
+            modalCounter.textContent = `${currentImageIndex + 1} / ${currentPortfolioImages.length}`;
         }
 
         // ===== REVIEWS ANIMATION =====
